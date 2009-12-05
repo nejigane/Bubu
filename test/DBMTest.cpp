@@ -396,14 +396,14 @@ TEST_F(DBMTest, SetTest) {
   EXPECT_EQ(3, *(value + 2));
   delete[] value;
 
-  uint32_t testData2[100];
-  std::fill(testData2, testData2 + 100, 100);
-  dbm->set("fuga", testData2, 100);
-  
+  uint32_t testData2[800];
+  std::fill(testData2, testData2 + 800, 100);
+  dbm->set("fuga", testData2, 800);
+
   value = dbm->get("fuga", &valueLength);
-  ASSERT_EQ(100, valueLength);
+  ASSERT_EQ(800, valueLength);
   EXPECT_EQ(100, *value);
-  EXPECT_EQ(100, *(value + 99));
+  EXPECT_EQ(100, *(value + 799));
   delete[] value;
 
   uint32_t testData3[2000];
